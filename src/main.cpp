@@ -13,7 +13,9 @@
 // Headers to include
 // ------------------------------------------------
 #include "projects_GSLC.h"
-#include "GPIO_integrate.h"
+#include "Struct.h"
+#include "GPIO_Integrate.h"
+#include "GUI_Integrate.h"
 #include "ESPNOW_Integrate.h"
 
 // ------------------------------------------------
@@ -287,7 +289,8 @@ void loop()
   // ------------------------------------------------
   // Update GUI Elements
   // ------------------------------------------------
-  UpdateTFT();
+  UpdateGPIO();
+  UpdateGUI();
   UpdateNOW();
   //TODO - Add update code for any text, gauges, or sliders
   
@@ -295,6 +298,6 @@ void loop()
   // Periodically call GUIslice update function
   // ------------------------------------------------
   //gslc_Update(&m_gui);
-  delay(50);
+  delay(20);
 }
 
