@@ -59,7 +59,7 @@ void UpdateNOW(){
     mecpy(dataTSend, &vRemote_struct, sizeof(vRemote_struct));
 
     // Send the data
-    esp_now_send( <MAC_ADDRESS>, dataToSend, sizeof(vRemote_struct));
+    esp_now_send(<MAC_ADDRESS>, dataToSend, sizeof(vRemote_struct));
     */
 }
 //<Functions !End!>
