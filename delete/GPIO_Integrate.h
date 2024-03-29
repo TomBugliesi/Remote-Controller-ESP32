@@ -124,7 +124,7 @@ void UpdateGPIO(){
   vRemote_struct.P1_In = vGPIO_struct.vGPIO_state.GPIO36_state;
   vRemote_struct.P2_In = vGPIO_struct.vGPIO_state.GPIO32_state;
 
-  DebugPrint();
+  //DebugPrint();
 }
 //<Functions !End!>
 #endif // _GPIO_INTEGRATE_H
