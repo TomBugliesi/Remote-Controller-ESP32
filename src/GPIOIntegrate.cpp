@@ -6,6 +6,9 @@
 
 #include "GPIOIntegrate.h"
 #include "Global.h"
+#include "ESPNOWSender.h"
+
+extern ESPNOWSender espnow; 
 
 GPIOIntegrate::GPIOIntegrate() {
   // Init GPIO structure
@@ -21,8 +24,6 @@ GPIOIntegrate::GPIOIntegrate() {
   pinMode(INTGRT_GPIO25, INPUT_PULLDOWN);
   pinMode(INTGRT_GPIO26, INPUT_PULLDOWN);
   pinMode(INTGRT_GPIO27, INPUT_PULLDOWN);
-
-  updateGPIO();
 }
 
 GPIOIntegrate::~GPIOIntegrate() {
@@ -47,6 +48,15 @@ void GPIOIntegrate::updateGPIO(){
   gpioStruct.J2x_In = (uint16_t) analogRead(INTGRT_GPIO35);
   gpioStruct.P1_In  = (uint16_t) analogRead(INTGRT_GPIO36);
   gpioStruct.J1x_In = (uint16_t) analogRead(INTGRT_GPIO39);
+
+  // Print GPIO values
+  // printGPIO();
+
+  // TODO: Inout from reading and saved value can also be different-> apply offset
+  memcpy(&(globalStructPtr->gpioData ), &(gpioStruct), sizeof(gpioStruct));
+
+  // Send data 
+  espnow.sendData(0x01, &(globalStructPtr->gpioData), sizeof(globalStructPtr->gpioData));
 }
 
 void GPIOIntegrate::printGPIO(){

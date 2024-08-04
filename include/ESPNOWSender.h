@@ -28,6 +28,7 @@ class ESPNOWSender {
 
     // Add public methods here
     void sendData(uint8_t header, GPIOStruct *data, size_t dataSize);
+    void sendData(uint8_t header, MotorStruct *data, size_t dataSize);
     static void receiveCallback(const uint8_t *macAddr, const uint8_t *data, int dataLen);
     void begin();
 };

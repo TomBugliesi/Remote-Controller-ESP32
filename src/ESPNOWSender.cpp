@@ -26,9 +26,24 @@ void ESPNOWSender::sendData(uint8_t header, GPIOStruct *data, size_t dataSize) {
   // Send data
   esp_err_t result = esp_now_send(broadcastAddress, packet, dataSize + 1);
   if (result == ESP_OK) {
-    Serial.println("Data sent successfully");
+    // Serial.println("Data sent successfully");
   } else {
-    Serial.println("Error sending data");
+    // Serial.println("Error sending data");
+  }
+}
+
+void ESPNOWSender::sendData(uint8_t header, MotorStruct *data, size_t dataSize) {
+  // Create data packet with header
+  uint8_t packet[dataSize + 1];
+  packet[0] = header; // Header indicating data type
+  memcpy(packet + 1, data, dataSize); // Copy data after header
+  
+  // Send data
+  esp_err_t result = esp_now_send(broadcastAddress, packet, dataSize + 1);
+  if (result == ESP_OK) {
+    // Serial.println("Data sent successfully");
+  } else {
+    // Serial.println("Error sending data");
   }
 }
 

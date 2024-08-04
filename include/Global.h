@@ -28,8 +28,18 @@ struct GPIOStruct {
   uint16_t P2_In;
 };
 
+struct MotorStruct {
+  float KpRoll;
+  float KiRoll;
+  float KdRoll;
+  float KpPitch;
+  float KiPitch;
+  float KdPitch;
+};
+
 struct GlobalStruct {
     GPIOStruct gpioData;
+    MotorStruct  motorData;
 };
 
 // Declare the global pointer to GlobalData

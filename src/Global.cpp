@@ -16,4 +16,11 @@ void initGlobal() {
         // Initialize globalDataPtr if necessary
         memset(globalStructPtr, 0, sizeof(globalStructPtr));
     }
+
+  globalStructPtr->motorData.KpPitch = 0.0;
+  globalStructPtr->motorData.KiPitch = 0.0;
+  globalStructPtr->motorData.KdPitch = 0.0;
+  globalStructPtr->motorData.KpRoll  = 0.0;
+  globalStructPtr->motorData.KiRoll  = 0.0;
+  globalStructPtr->motorData.KdRoll  = 0.0;
 }
